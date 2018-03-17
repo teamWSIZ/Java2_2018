@@ -31,6 +31,7 @@ public class Controller {
     Stage stage;
 
     public void initialize() {
+        //mała ikonka
         Image image = new Image(getClass().getResourceAsStream("down.png"),
                 64, 64, true, true);
         start.setGraphic(new ImageView(image));
