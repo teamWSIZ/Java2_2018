@@ -27,14 +27,12 @@ public class Controller {
     @FXML
     Button start;
 
-
     @FXML
     Stage stage;
 
-
     public void initialize() {
         Image image = new Image(getClass().getResourceAsStream("down.png"),
-                128, 128, true, true);
+                64, 64, true, true);
         start.setGraphic(new ImageView(image));
 
     }
