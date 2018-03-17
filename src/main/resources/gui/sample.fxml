@@ -51,13 +51,7 @@
             </VBox>
         </center>
 
-        <right>
-            <VBox prefWidth="200" style="-fx-padding: 10px">
-                <Label fx:id="positive"></Label>
-                <Label fx:id="badbad"></Label>
-                <Label fx:id="atat"></Label>
-            </VBox>
-        </right>
+      
 
     </BorderPane>
 
