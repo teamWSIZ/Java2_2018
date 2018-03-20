@@ -38,7 +38,7 @@
         </top>
         <left>
             <VBox prefWidth="200">
-                <Button fx:id="start"></Button>
+                <Button fx:id="start" onAction="#serializeTest"></Button>
             </VBox>
         </left>
 
@@ -48,6 +48,11 @@
                     <TextField fx:id="in"></TextField>
                     <TextField fx:id="out"></TextField>
                 </HBox>
+                <Button onAction="#writeLargeFile">Write large</Button>
+                <Button onAction="#readLargeFile">Read large</Button>
+                <Button onAction="#writeJackson">Write large (Jackson)</Button>
+                <Button onAction="#readJackson">Read large (Jackson)</Button>
+
             </VBox>
         </center>
 
