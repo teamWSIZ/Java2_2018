@@ -59,13 +59,17 @@ public class Controller {
     }
 
     public void checkIt() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Zły input");
-        alert.setHeaderText("Złe dane");
-        alert.setContentText("Wprowadzono złe dane; " +
-                "wymagany format to dwa słowa oddzielone przecinkiem");
+        String wpisany = in.getText();
+        if (countWordsInString(wpisany)!=2) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Zły input");
+            alert.setHeaderText("Złe dane");
+            alert.setContentText("Wprowadzono złe dane; " +
+                    "wymagany format to dwa słowa oddzielone przecinkiem");
 
-        alert.showAndWait();
+            alert.showAndWait();
+        }
+
     }
 
     private int countWordsInString(String w) {
