@@ -1,5 +1,9 @@
 package tmp;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +32,7 @@ class OurUser {
 }
 
 public class KlasyPrzyklad {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         OurUser u1 = new OurUser();
         u1.username = "waynbot";
         u1.alias = "incognito";
@@ -52,6 +56,13 @@ public class KlasyPrzyklad {
         users.add(u4);
 
         System.out.println(users);
+
+
+        ///Zapis do pliku
+        String w = "Abra kadabra!!";
+        Files.asCharSink(new File("abra.txt"),
+                Charsets.UTF_8).write(w);
+
 
     }
 }
