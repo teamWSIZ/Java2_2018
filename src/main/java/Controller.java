@@ -1,4 +1,5 @@
 import com.google.common.base.Charsets;
+import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,5 +66,16 @@ public class Controller {
                 "wymagany format to dwa słowa oddzielone przecinkiem");
 
         alert.showAndWait();
+    }
+
+    private int countWordsInString(String w) {
+        Iterable<String> splitted =
+                Splitter.on(",").omitEmptyStrings().trimResults().split(w);
+
+        int x = 0;
+        for(String s : splitted) {
+            x++;
+        }
+        return x;
     }
 }
