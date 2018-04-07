@@ -40,6 +40,6 @@ public class SplitterExample {
         System.out.println("Liczba słów:" + x);
 
         System.out.println(readWebpage("https://docs.oracle.com/javase/tutorial/networking/urls/readingURL.html"));
-        
+
     }
 }
