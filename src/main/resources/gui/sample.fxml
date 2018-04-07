@@ -48,6 +48,9 @@
                     <TextField fx:id="in"></TextField>
                     <TextField fx:id="out"></TextField>
                 </HBox>
+                <HBox>
+                    <Button onAction="#checkIt"> Sprawdź input</Button>
+                </HBox>
             </VBox>
         </center>
 

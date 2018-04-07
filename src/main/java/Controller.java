@@ -1,5 +1,6 @@
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -54,5 +55,15 @@ public class Controller {
         chooser.setTitle("Otwórz plik...");
         File f = chooser.showOpenDialog(stage);
         if (f!=null) loadWords(f);
+    }
+
+    public void checkIt() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Zły input");
+        alert.setHeaderText("Złe dane");
+        alert.setContentText("Wprowadzono złe dane; " +
+                "wymagany format to dwa słowa oddzielone przecinkiem");
+
+        alert.showAndWait();
     }
 }
