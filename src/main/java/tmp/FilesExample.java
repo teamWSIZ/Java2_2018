@@ -58,39 +58,42 @@ public class FilesExample {
     public static void main(String[] args) throws Exception {
         Produkt p = new Produkt("X1002123", "Suszarka", "Super Whrillwind ++");
         Produkt d = new Produkt("X1002124", "Suszarka zwykła", "Whrillwind regular");
-        System.out.println(p);
-        System.out.println(d);
+        Produkt e = new Produkt("X1002125", "Smartphone", "Samsung Galaxy S9 G960F Dual SIM Midnight Black");
 
         List<Produkt> produkts = new ArrayList<>();
         produkts.add(p);
         produkts.add(d);
+        produkts.add(e);
 
-        System.out.println(produkts);
-
-        System.out.println(produkts);
         System.out.println("Nazwy i opisy dostępnych produktów:");
         for(Produkt pp : produkts) {
             System.out.println(pp.getNazwa() + " opis:" + pp.getOpis());
         }
 
+        System.out.println("-------------------------");
 
-//
-//        //zamiana listy produktów na String
-//        ObjectMapper mapper = new ObjectMapper();
-//        String json = mapper.writeValueAsString(produkts);
-//
+
+        //zamiana listy produktów na String
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(produkts);
+
+        System.out.println("Json z kolekcją produktów: " + json);
+
+//        //zamina json-a na listę produktów
+        List<Produkt> odczynataLista = mapper.readValue(json, List.class);
+        System.out.println("Odczytana                 :" + odczynataLista);
+
+
 //        //zapis do pliku
-//        System.out.println("Json : " + json);
-//        System.out.println("Zapisuję do pliku:");
-//        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
-//
+        System.out.println("Zapisuję do pliku:");
+        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
+
+
+        //
 //        //odczyt Stringa z pliku
 //        String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
 //                .read();
 //
-//        //zamaina json-a na listę produktów
-//        List<Produkt> odczynataLista = mapper.readValue(odczytany, List.class);
-//        System.out.println("Odczytana:" + odczynataLista);
 
     }
 }
