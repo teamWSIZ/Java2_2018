@@ -7,6 +7,7 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 class Produkt {
     String serial;
@@ -51,6 +52,22 @@ class Produkt {
     public void setOpis(String opis) {
         this.opis = opis;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produkt produkt = (Produkt) o;
+        return Objects.equals(serial, produkt.serial) &&
+                Objects.equals(nazwa, produkt.nazwa) &&
+                Objects.equals(opis, produkt.opis);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(serial, nazwa, opis);
+    }
 }
 
 
@@ -89,11 +106,12 @@ public class FilesExample {
         Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
 
 
-        //
 //        //odczyt Stringa z pliku
-//        String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
-//                .read();
-//
+        String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
+                .read();
+
+        System.out.println("Json odczytany z pliku: " + odczytany);
+
 
     }
 }
