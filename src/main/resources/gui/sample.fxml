@@ -51,6 +51,14 @@
                 <HBox>
                     <Button onAction="#checkIt"> Sprawdź input</Button>
                 </HBox>
+                <HBox>
+                    <Label>Username:</Label>
+                    <TextField fx:id="username" promptText="(username)"></TextField>
+                </HBox>
+                <HBox>
+                    <Button onAction="#saveUsername"> Zapisz username</Button>
+                    <Button onAction="#loadUsername"> Wczytaj username</Button>
+                </HBox>
             </VBox>
         </center>
 

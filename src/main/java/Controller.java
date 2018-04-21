@@ -32,11 +32,16 @@ public class Controller {
     @FXML
     Stage stage;
 
-    public void initialize() {
+    @FXML
+    TextField username;
+
+    public void initialize() throws Exception {
         //mała ikonka (do zmiany)
         Image image = new Image(getClass().getResourceAsStream("down.png"),
                 64, 64, true, true);
         start.setGraphic(new ImageView(image));
+
+        loadUsername();
 
     }
 
@@ -82,4 +87,21 @@ public class Controller {
         }
         return x;
     }
+
+    public void saveUsername() throws Exception {
+        String text = username.getText();
+        Files.asCharSink(new File("user_data.json"), Charsets.UTF_8).write(text);
+    }
+
+    public void loadUsername() {
+        String zPliku =
+                null;
+        try {
+            zPliku = Files.asCharSource(new File("user_data.json"), Charsets.UTF_8)
+                    .read();
+        } catch (IOException e) {
+        }
+        username.setText(zPliku);
+    }
+
 }
