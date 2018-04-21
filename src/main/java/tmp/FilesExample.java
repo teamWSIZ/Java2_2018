@@ -67,22 +67,30 @@ public class FilesExample {
 
         System.out.println(produkts);
 
-        //zamiana listy produktów na String
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(produkts);
+        System.out.println(produkts);
+        System.out.println("Nazwy i opisy dostępnych produktów:");
+        for(Produkt pp : produkts) {
+            System.out.println(pp.getNazwa() + " opis:" + pp.getOpis());
+        }
 
-        //zapis do pliku
-        System.out.println("Json : " + json);
-        System.out.println("Zapisuję do pliku:");
-        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
 
-        //odczyt Stringa z pliku
-        String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
-                .read();
-
-        //zamaina json-a na listę produktów
-        List<Produkt> odczynataLista = mapper.readValue(odczytany, List.class);
-        System.out.println("Odczytana:" + odczynataLista);
+//
+//        //zamiana listy produktów na String
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = mapper.writeValueAsString(produkts);
+//
+//        //zapis do pliku
+//        System.out.println("Json : " + json);
+//        System.out.println("Zapisuję do pliku:");
+//        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
+//
+//        //odczyt Stringa z pliku
+//        String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
+//                .read();
+//
+//        //zamaina json-a na listę produktów
+//        List<Produkt> odczynataLista = mapper.readValue(odczytany, List.class);
+//        System.out.println("Odczytana:" + odczynataLista);
 
     }
 }
