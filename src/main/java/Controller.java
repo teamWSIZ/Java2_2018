@@ -1,14 +1,17 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import tmp.Article;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,12 +32,16 @@ public class Controller {
 
     @FXML
     TextField username;
+    @FXML
+    TextField title;
+    @FXML
+    TextArea content;
 
     public void initialize() throws Exception {
         Image image = new Image(getClass().getResourceAsStream("down.png"), 64, 64, true, true);
         start.setGraphic(new ImageView(image));
 
-        loadUsername();
+        loadArticle();
 
     }
 
@@ -72,19 +79,39 @@ public class Controller {
         return x;
     }
 
-    public void saveUsername() throws Exception {
-        String text = username.getText();
-        Files.asCharSink(new File("user_data.json"), Charsets.UTF_8).write(text);
+    public void saveArticle() throws Exception {
+        String user = username.getText();
+        String artTitle = title.getText();
+        String artContent = content.getText();
+
+        Article a = new Article(user, artTitle, artContent);
+
+        //kopia z przykładu zapisywania
+        //Zamiana na String
+        ObjectMapper mapper = new ObjectMapper();
+        String artykulTekstowy = mapper.writeValueAsString(a);
+
+        //Zapis do pliku
+        Files.asCharSink(new File("articleABC.json"),
+                Charsets.UTF_8).write(artykulTekstowy);
+
     }
 
-    public void loadUsername() {
-        String zPliku = null;
-        try {
-            zPliku = Files.asCharSource(new File("user_data.json"), Charsets.UTF_8)
-                    .read();
-        } catch (IOException e) {
-        }
-        username.setText(zPliku);
+    public void loadArticle() throws Exception {
+        //przekopiowane z przykładu:
+        //Wczytać string z dysku
+        String loaded = Files.asCharSource(
+                new File("articleABC.json"), Charsets.UTF_8)
+                .read();
+
+        //Zamienić string na Article
+        ObjectMapper mapper = new ObjectMapper();
+        Article a = mapper.readValue(loaded, Article.class);
+
+        //wrzucanie treści wczytanego artykułu do GUI
+        username.setText(a.getAuthor());
+        title.setText(a.getTitle());
+        content.setText(a.getContent());
     }
 
 }

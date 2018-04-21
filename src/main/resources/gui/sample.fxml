@@ -54,12 +54,12 @@
                     <TextField fx:id="title" promptText="(tytuł)"></TextField>
                 </HBox>
                 <HBox style="-fx-padding: 5px; width">
-                    <TextArea fx:id="tekst" promptText="(treść artykułu)"></TextArea>
+                    <TextArea fx:id="content" promptText="(treść artykułu)"></TextArea>
                 </HBox>
 
                 <HBox>
-                    <Button onAction="#saveUsername"> Zapisz username</Button>
-                    <Button onAction="#loadUsername"> Wczytaj username</Button>
+                    <Button onAction="#saveArticle"> Zapisz artykuł</Button>
+                    <Button onAction="#loadArticle"> Wczytaj artykuł</Button>
                 </HBox>
             </VBox>
         </center>
