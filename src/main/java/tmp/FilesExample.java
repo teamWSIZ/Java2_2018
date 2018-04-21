@@ -1,5 +1,6 @@
 package tmp;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
@@ -9,10 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+/**
+ * Przykład zapisu i odczytu z dysku danych (list obiektów typu Produkt)
+ */
+
+//Prosta klasa zawierająca jakieś dane
 class Produkt {
     String serial;
     String nazwa;
     String opis;
+
+    public Produkt() {
+    }
 
     public Produkt(String serial, String nazwa, String opis) {
         this.serial = serial;
@@ -71,6 +81,7 @@ class Produkt {
 }
 
 
+
 public class FilesExample {
     public static void main(String[] args) throws Exception {
         Produkt p = new Produkt("X1002123", "Suszarka", "Super Whrillwind ++");
@@ -96,17 +107,23 @@ public class FilesExample {
 
         System.out.println("Json z kolekcją produktów: " + json);
 
-//        //zamina json-a na listę produktów
-        List<Produkt> odczynataLista = mapper.readValue(json, List.class);
+        //zamina json-a na listę produktów
+        List<Produkt> odczynataLista = mapper.readValue(json, new TypeReference<List<Produkt>>(){});
         System.out.println("Odczytana                 :" + odczynataLista);
 
 
-//        //zapis do pliku
+        for(Produkt pp : odczynataLista) {
+            System.out.println(pp.nazwa);
+        }
+
+
+        //zapis do pliku
         System.out.println("Zapisuję do pliku:");
-        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
+        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8)
+                .write(json);
 
 
-//        //odczyt Stringa z pliku
+        //odczyt Stringa z pliku
         String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
                 .read();
 
