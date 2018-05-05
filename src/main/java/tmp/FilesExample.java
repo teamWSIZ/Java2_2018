@@ -119,13 +119,12 @@ public class FilesExample {
 
         //zapis do pliku
         System.out.println("Zapisuję do pliku:");
-        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8)
-                .write(json);
+        Files.asCharSink(new File("produkty.json"), Charsets.UTF_8).write(json);
 
 
         //odczyt Stringa z pliku
-        String odczytany =  Files.asCharSource(new File("produkty.json"), Charsets.UTF_8)
-                .read();
+        String odczytany =
+                Files.asCharSource(new File("produkty.json"), Charsets.UTF_8).read();
 
         System.out.println("Json odczytany z pliku: " + odczytany);
 

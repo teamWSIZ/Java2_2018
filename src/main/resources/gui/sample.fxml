@@ -13,6 +13,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ComboBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controller"
@@ -53,7 +54,7 @@
                     <Label>Tytuł:</Label>
                     <TextField fx:id="title" promptText="(tytuł)"></TextField>
                 </HBox>
-                <HBox style="-fx-padding: 5px; width">
+                <HBox style="-fx-padding: 5px;">
                     <TextArea fx:id="content" promptText="(treść artykułu)"></TextArea>
                 </HBox>
 
@@ -63,6 +64,10 @@
                 </HBox>
             </VBox>
         </center>
+
+        <bottom>
+            <ComboBox fx:id="combo"></ComboBox>
+        </bottom>
 
       
 

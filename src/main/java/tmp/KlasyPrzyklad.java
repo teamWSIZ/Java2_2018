@@ -60,8 +60,7 @@ public class KlasyPrzyklad {
 
         ///Zapis do pliku
         String w = "Abra kadabra!!";
-        Files.asCharSink(new File("abra.txt"),
-                Charsets.UTF_8).write(w);
+        Files.asCharSink(new File("abra.txt"), Charsets.UTF_8).write(w);
 
 
     }

@@ -1,0 +1,23 @@
+1) Stworzyc klase YouTubeVideo
+
+- title
+- url
+- publisher
+- length
+
+(niech to beda stringi)
+
+2) Wygenerowac w tej klasie toString, equals, hashCode, gettery/settery na wszystkie pola
+oraz konstruktor pusty, i konstruktor bioracy wszystkie pola
+
+3) Stworzyc kilka instancji klasy YouTubeVideo
+
+4) Zapisac tresc jakiegos stringa, np. String ww = "Audio materials on this channel..."
+   do pliku "important.txt"
+
+5) Wczytac zawartosc pliku "important.txt" z pliku
+
+6) Stworzyc aplikacje z gui z combo-box zawierajacym instancje YouTubeVideo,
+
+7) (*) po wybraniu pozycji z combo, aplikacja pokazuje w polach tekstowych
+   zawartosc pol (title,url,publisher,length)

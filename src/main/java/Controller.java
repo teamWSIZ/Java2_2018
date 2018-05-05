@@ -2,11 +2,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import com.google.common.io.Files;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -37,11 +36,27 @@ public class Controller {
     @FXML
     TextArea content;
 
+    @FXML
+    ComboBox<Article> combo;
+
     public void initialize() throws Exception {
         Image image = new Image(getClass().getResourceAsStream("down.png"), 64, 64, true, true);
         start.setGraphic(new ImageView(image));
 
         loadArticle();
+
+        ///filling combo
+        ObservableList<Article> data =
+                FXCollections.observableArrayList(
+                        new Article("aa", "aa", "aa"),
+                        new Article("bb", "aa", "aa"),
+                        new Article("cc", "aa", "aa")
+                );
+        combo.setItems(data);
+        combo.valueProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(newValue);
+        });
+
 
     }
 
