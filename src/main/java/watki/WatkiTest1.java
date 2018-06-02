@@ -27,6 +27,7 @@ public class WatkiTest1 {
 
         System.out.println("Main czeka");
         Thread.sleep(100);
+        executorService.shutdown();
 
         //do wątków: http://tutorials.jenkov.com/java-concurrency/index.html
 
