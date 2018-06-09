@@ -15,7 +15,7 @@ public class Person {
     }
 
     @Override
-    public String toString() {
+    public String  toString() {
         return "Person{" +
                 "imie='" + imie + '\'' +
                 ", nazwisko='" + nazwisko + '\'' +
