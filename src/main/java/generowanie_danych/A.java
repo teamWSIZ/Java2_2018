@@ -10,14 +10,14 @@ public class A {
 
     //https://en.wikipedia.org/wiki/Birthday_problem
     public static void main(String[] args) {
-        int nosob = 10_000_000;
+        int nosob = 100;
         Set<String> osoby = new HashSet<>();
 
         DataFactory df = new DataFactory();
         for (int i = 0; i < nosob; i++) {
 //            String name = df.getFirstName() + " "+ df.getLastName() + " city: " + df.getCity();
             Person p = new Person(df.getFirstName(), df.getLastName(), df.getEmailAddress());
-//            System.out.println(p);
+            System.out.println(p);
             osoby.add(p.imie + p.nazwisko);
         }
 
