@@ -31,6 +31,7 @@ public class MultiGeocache {
 
 
     static void znajdzWszystkie(int[] a) {
+        rozwiazanieNiePatrzTu(a);
     }
 
     public static void main(String[] args) {
@@ -38,6 +39,26 @@ public class MultiGeocache {
         znajdzWszystkie(new int[]{1,3,4,5,0,2});    //--> Tak
         znajdzWszystkie(new int[]{0,1,2,3,4,5});    //--> Nie
         znajdzWszystkie(new int[]{1,0,2,3,4,5});    //--> Nie
+    }
+
+    static void rozwiazanieNiePatrzTu(int[] a) {
+        int n = a.length;
+        boolean[] visited = new boolean[n]; // wypełnione samymi 'false'
+        int at = 0;
+        for (int i = 0; i <= n; i++) {
+            visited[at] = true;
+            at = a[at];
+            if (visited[at]) break; //kończymy pętlę jak trafimy na skrytkę już odwiedzoną
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                System.out.println("Nie odwiedzono skrytki " + i + "! tablica odwiedzonych:" +
+                        Arrays.toString(visited));
+                return;
+            }
+        }
+        System.out.println("Wszystkie skrytki zostały znalezione!");
     }
 
 }
