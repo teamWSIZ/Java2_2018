@@ -1,5 +1,7 @@
 package konkurs2;
 
+import java.util.Arrays;
+
 /**
  * Podczas zabawy na plaży dzieciaki wymyśliły ćwiczenie ze spychaczem.
  * Mają dostępne górki pisaku ułożone w rząd, których wysokości są podane.
@@ -23,8 +25,15 @@ package konkurs2;
 public class Spychacz {
 
     static void zepchnij(int[] a, int k) {
-
+        int zmagazynowane = 0;
+        for (int i = 0; i < a.length; i++) {
+            zmagazynowane += a[i];
+            a[i] = Math.min(k, zmagazynowane);
+            zmagazynowane -= a[i];
+        }
+        a[a.length-1] += zmagazynowane;
         //wypisać wynik do konsoli
+        System.out.println(Arrays.toString(a));
     }
 
     public static void main(String[] args) {
@@ -33,8 +42,5 @@ public class Spychacz {
         zepchnij(new int[]{4,3,0}, 2);      // --> 2,2,3    //góra pisasku na końcu zostaje
 
         zepchnij(new int[]{3, 1, 0, 2, 0, 4, 1, 2, 0}, 2);      // --> {2, 2, 0, 2, 0, 2, 2, 2, 1}
-
-
-
     }
 }

@@ -23,8 +23,21 @@ public class TicTacToeNaLinii {
      */
 
     static void isXwinner(String s) {
+        //rozwiązanie najprostsze:
+//        boolean winner = s.contains("xxx");
+//        System.out.println(winner);
+
+        //rozwiązanie bardziej wymowne:
+        boolean win = false;
+        for (int i = 0; i < s.length() - 2; i++) {
+            if (s.charAt(i)=='x' && s.charAt(i+1)=='x' && s.charAt(i+2)=='x') {
+                win = true;
+                break;
+            }
+        }
 
         //wypisać wynik do konsoli
+        System.out.println(win);
     }
 
     public static void main(String[] args) {
@@ -36,6 +49,5 @@ public class TicTacToeNaLinii {
        isXwinner("ooxxxoox");      //Tak
        isXwinner("oooxxxox");      //Tak
        isXwinner("xxx");      //Tak
-
     }
 }
