@@ -11,5 +11,7 @@ public class Rozw0 {
 
         System.out.println(x * x);
 
+        "http://codeforces.com/contests/225351"
+
     }
 }
